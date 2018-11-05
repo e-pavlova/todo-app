@@ -2,28 +2,25 @@
   display: flex;
   height: 6rem;
   border-bottom: 1px dotted #666;
+  color: #999;
+  padding-top: 1.5rem;
 }
 
-.task__filtered__all {
-
+.task__filtered__all:after {
+  content: "/";
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .task__filtered__all__link {
-
+  text-decoration: none;
+  color: inherit;
 }
 
-.task__filtered__active {
-
+.task__filtered__all__link:hover {
+  color: rgb(211, 211, 211);
 }
 
-.task__filtered__active__link {
-
-}
-
-.task__filtered__completed {
-
-}
-
-.task__filtered__completed__link {
+.task__filtered__all {
 
 }

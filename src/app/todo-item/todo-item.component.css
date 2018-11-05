@@ -4,14 +4,12 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dotted #666;
-}
-
-.task__item__check {
-
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
 }
 
 .task__item__text {
-
+  color: #999;
 }
 
 .task__item__action {
@@ -19,14 +17,26 @@
   justify-content: space-between;
 }
 
-.task__item__action__edit {
-
-}
-
-.task__item__action__delete {
-
+.task__item__action__button{
+  border: 0;
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  background-color: #2a2a2a;
+  color: #555;
+  outline: none;
 }
 
 .icons {
-  color: #555;
+  color: inherit;
+  font-size: 1.2rem;
+}
+
+.task__item__action__button:hover {
+  cursor: pointer;
+  color: rgb(211, 211, 211);
+}
+
+.task__item__action__button__trash {
+  margin-left: 0.3rem;
 }
