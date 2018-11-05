@@ -1,0 +1,29 @@
+.task__filtered {
+  display: flex;
+  height: 6rem;
+  border-bottom: 1px dotted #666;
+}
+
+.task__filtered__all {
+
+}
+
+.task__filtered__all__link {
+
+}
+
+.task__filtered__active {
+
+}
+
+.task__filtered__active__link {
+
+}
+
+.task__filtered__completed {
+
+}
+
+.task__filtered__completed__link {
+
+}

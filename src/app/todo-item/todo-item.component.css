@@ -1,0 +1,32 @@
+.task__item {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted #666;
+}
+
+.task__item__check {
+
+}
+
+.task__item__text {
+
+}
+
+.task__item__action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task__item__action__edit {
+
+}
+
+.task__item__action__delete {
+
+}
+
+.icons {
+  color: #555;
+}
