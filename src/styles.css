@@ -8,9 +8,7 @@ body {
 }
 
 app-root {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  display: block;
   max-width: 50rem;
   margin: auto;
 }

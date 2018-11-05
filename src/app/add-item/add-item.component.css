@@ -15,18 +15,13 @@
   width: 40px;
   height: 40px;
   background-color: #2a2a2a;
-  /*color: #555;*/
+  color: #555;
   outline: none;
 }
 
 .icon {
-  color: #555;
+  color: inherit;
   font-size: 1.2rem;
-}
-
-.icon:hover {
-  cursor: pointer;
-  color: rgb(211, 211, 211);
 }
 
 .task__container__input__text {
@@ -39,5 +34,10 @@
 }
 
 ::placeholder {
+  color: rgb(211, 211, 211);
+}
+
+.task__container__button:hover {
+  cursor: pointer;
   color: rgb(211, 211, 211);
 }
