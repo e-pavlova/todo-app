@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Item } from "../../item.interface";
+import {Injectable} from '@angular/core';
+import {Item} from "../../item.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
+  private arrayOfTasks: Item[] = [];
+
   constructor() {
   }
 
-  public createTask(item: string): void {
+  public createTask(item: string): number {
 
     let itemObj: Item = {
       id: Date.now(),
@@ -17,21 +19,55 @@ export class ItemService {
       isActive: true
     };
 
-    localStorage.setItem(itemObj.id.toString(), JSON.stringify(itemObj));
+
+    const arrayOfTasks = this.getAllTasks() || [];
+
+    arrayOfTasks.push(itemObj);
+
+    localStorage.setItem('array', JSON.stringify(arrayOfTasks));
+
+    return itemObj.id;
   }
 
-  public getTaskById(id: string): Item {
-    return JSON.parse(localStorage.getItem(id));
+  public getAllTasks(): Item[] {
+    return JSON.parse(localStorage.getItem('array'));
   }
 
-  public markAsCompleted(id: string): void {
-    let item = JSON.parse(localStorage.getItem(id));
+  public getTaskById(id: number): Item {
+    return this.getAllTasks().find((array) => {
+      return array.id === id
+    });
+  }
+
+  public markAsCompleted(id: number): void {
+    let allTasks = this.getAllTasks();
+    let item = allTasks.find((array) => {
+      return array.id === id
+    });
+
     item.isActive = !(item.isActive);
-    localStorage.setItem(id, JSON.stringify(item));
+
+    localStorage.setItem('array', JSON.stringify(allTasks));
   }
 
-  public deleteTask(id: string): void {
-    localStorage.removeItem(id);
+
+  public updateDescription(id: number, description: string): void {
+    let allTasks = this.getAllTasks();
+    let item = allTasks.find((array) => {
+      return array.id === id
+    });
+
+    item.description = description;
+
+    localStorage.setItem('array', JSON.stringify(allTasks));
+  }
+
+  public deleteTask(id: number): void {
+    let allTasks = this.getAllTasks().filter((array) => {
+      return array.id !== id
+    });
+
+    localStorage.setItem('array', JSON.stringify(allTasks));
   }
 
 }
