@@ -40,3 +40,12 @@
 .task__item__action__button__trash {
   margin-left: 0.3rem;
 }
+
+.task__item__text__checked {
+  text-decoration: line-through #85bf6b;
+}
+
+.task__item__action__button__checked {
+  color: #85bf6b;
+}
+
