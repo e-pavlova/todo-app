@@ -1,5 +1,6 @@
 .task__item {
-  height: 3rem;
+  /*height: 3rem;*/
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,4 +56,14 @@
   outline: none;
   color: rgb(255, 255, 255);
   width: 45rem;
+}
+
+.task__item__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task__item__container__button {
+  margin-right: 1rem;
 }
