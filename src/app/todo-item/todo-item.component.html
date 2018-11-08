@@ -1,9 +1,14 @@
 <div class="task__item">
   <div class="task__item__container">
-    <button class="task__item__action__button task__item__container__button" *ngIf="!isEdit">
+    <button class="task__item__action__button task__item__container__button"
+            *ngIf="!isEdit"
+            [ngClass]="{'task__item__action__button__checked': !isCompleted}"
+            (click)="completeTask(task.id)">
       <i class="fas fa-check icons"></i>
     </button>
-    <div class="task__item__text" *ngIf="!isEdit">{{task.description}}</div>
+    <div class="task__item__text" *ngIf="!isEdit" [ngClass]="{'task__item__text__checked': !isCompleted}">
+      {{task.description}}
+    </div>
     <input class="task__container__input__text" *ngIf="isEdit" [(ngModel)]="task.description" name="task">
   </div>
   <div class="task__item__action">

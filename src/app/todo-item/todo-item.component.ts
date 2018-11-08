@@ -11,6 +11,7 @@ export class TodoItemComponent implements OnInit {
   @Input() task: Item;
 
   public isEdit: boolean = false;
+  public isCompleted: boolean = true;
 
   constructor(private itemService: ItemService) {
   }
@@ -22,6 +23,11 @@ export class TodoItemComponent implements OnInit {
   public saveTask(): void {
     this.isEdit = false;
     // this.itemService.updateDescription();
+  }
+
+  public completeTask(id: number): void {
+    this.itemService.markAsCompleted(id);
+    this.isCompleted = this.itemService.getTaskById(id).isActive;
   }
 
   ngOnInit() {
