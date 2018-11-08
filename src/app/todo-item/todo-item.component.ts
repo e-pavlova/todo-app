@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ItemService } from '../core/services/item.service';
 import { Item } from '../item.interface';
+import {NotifyService} from "../core/services/notify.service";
 
 @Component({
   selector: 'app-todo-item',
@@ -13,7 +14,7 @@ export class TodoItemComponent implements OnInit {
   public isEdit: boolean = false;
   public isCompleted: boolean = true;
 
-  constructor(private itemService: ItemService) {
+  constructor(private itemService: ItemService, private notifyService: NotifyService) {
   }
 
   public editTask(): void {
@@ -28,6 +29,11 @@ export class TodoItemComponent implements OnInit {
   public completeTask(id: number): void {
     this.itemService.markAsCompleted(id);
     this.isCompleted = this.itemService.getTaskById(id).isActive;
+  }
+
+  public removeTask(id: number): void {
+    this.itemService.deleteTask(id);
+    this.notifyService.notifyChanges();
   }
 
   ngOnInit() {
