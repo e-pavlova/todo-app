@@ -18,7 +18,7 @@
     <button class="task__item__action__button task__item__action__button__trash" *ngIf="!isEdit">
       <i class="fas fa-trash icons"></i>
     </button>
-    <button class="task__item__action__button" *ngIf="isEdit" (click)="saveTask()">
+    <button class="task__item__action__button" *ngIf="isEdit" (click)="saveTask(task.id, task.description)">
       <i class="far fa-save icons"></i>
     </button>
   </div>

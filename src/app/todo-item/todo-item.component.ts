@@ -20,9 +20,9 @@ export class TodoItemComponent implements OnInit {
     this.isEdit = true;
   }
 
-  public saveTask(): void {
+  public saveTask(id: number, description: string): void {
     this.isEdit = false;
-    // this.itemService.updateDescription();
+    this.itemService.updateDescription(id, description);
   }
 
   public completeTask(id: number): void {
