@@ -49,3 +49,10 @@
   color: #85bf6b;
 }
 
+.task__container__input__text {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  width: 45rem;
+}

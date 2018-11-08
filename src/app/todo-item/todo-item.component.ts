@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ItemService } from '../core/services/item.service';
+import { Item } from '../item.interface';
 
 @Component({
   selector: 'app-todo-item',
@@ -6,8 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
+  @Input() task: Item;
 
-  constructor() { }
+  public isEdit: boolean = false;
+
+  constructor(private itemService: ItemService) {
+  }
+
+  public editTask(): void {
+    this.isEdit = true;
+  }
+
+  public saveTask(): void {
+    this.isEdit = false;
+    // this.itemService.updateDescription();
+  }
 
   ngOnInit() {
   }

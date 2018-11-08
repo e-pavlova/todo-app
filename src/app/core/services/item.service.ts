@@ -1,12 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Item} from "../../item.interface";
+import { Injectable } from '@angular/core';
+import { Item } from '../../item.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-
-  private arrayOfTasks: Item[] = [];
 
   constructor() {
   }
@@ -35,14 +33,14 @@ export class ItemService {
 
   public getTaskById(id: number): Item {
     return this.getAllTasks().find((array) => {
-      return array.id === id
+      return array.id === id;
     });
   }
 
   public markAsCompleted(id: number): void {
     let allTasks = this.getAllTasks();
     let item = allTasks.find((array) => {
-      return array.id === id
+      return array.id === id;
     });
 
     item.isActive = !(item.isActive);
@@ -54,7 +52,7 @@ export class ItemService {
   public updateDescription(id: number, description: string): void {
     let allTasks = this.getAllTasks();
     let item = allTasks.find((array) => {
-      return array.id === id
+      return array.id === id;
     });
 
     item.description = description;
@@ -64,7 +62,7 @@ export class ItemService {
 
   public deleteTask(id: number): void {
     let allTasks = this.getAllTasks().filter((array) => {
-      return array.id !== id
+      return array.id !== id;
     });
 
     localStorage.setItem('array', JSON.stringify(allTasks));

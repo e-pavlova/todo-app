@@ -2,5 +2,5 @@
   <app-add-item></app-add-item>
   <app-todo-view></app-todo-view>
   <!--<router-outlet></router-outlet>-->
-  <app-todo-item></app-todo-item>
+  <app-todo-item *ngFor="let task of tasks" [task]="task"></app-todo-item>
 </div>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemService } from "./services/item.service";
+import { ItemService } from './services/item.service';
+import { NotifyService } from './services/notify.service';
 
 @NgModule({
   declarations: [],
@@ -8,7 +9,9 @@ import { ItemService } from "./services/item.service";
     CommonModule
   ],
   providers: [
-    ItemService
+    ItemService,
+    NotifyService
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

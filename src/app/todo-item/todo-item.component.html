@@ -1,14 +1,18 @@
 <div class="task__item">
-  <button class="task__item__action__button">
+  <button class="task__item__action__button" *ngIf="!isEdit">
     <i class="fas fa-check icons"></i>
   </button>
-  <div class="task__item__text">TEXT</div>
+  <div class="task__item__text" *ngIf="!isEdit">{{task.description}}</div>
+  <input class="task__container__input__text" *ngIf="isEdit" [(ngModel)]="task.description" name="task">
   <div class="task__item__action">
-    <button class="task__item__action__button">
+    <button class="task__item__action__button" (click)="editTask()" *ngIf="!isEdit">
       <i class="fas fa-pen icons"></i>
     </button>
-    <button class="task__item__action__button task__item__action__button__trash">
+    <button class="task__item__action__button task__item__action__button__trash" *ngIf="!isEdit">
       <i class="fas fa-trash icons"></i>
+    </button>
+    <button class="task__item__action__button" *ngIf="isEdit" (click)="saveTask()">
+      <i class="far fa-save icons"></i>
     </button>
   </div>
 </div>
