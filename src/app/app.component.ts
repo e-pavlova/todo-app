@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemService } from './core/services/item.service';
-import { Item } from './item.interface';
-import { NotifyService } from './core/services/notify.service';
+import {Component, OnInit} from '@angular/core';
+import {ItemService} from './core/services/item.service';
+import {Item} from './item.interface';
+import {NotifyService} from './core/services/notify.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +20,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.tasks = this.itemService.getAllTasks();
+  }
+
+  public showAll(): void {
+    this.tasks = this.itemService.getAllTasks();
+  }
+
+  public showActive(): void {
+    this.tasks = this.itemService.getAllTasks().filter((array) => {
+      return array.isActive === true;
+    })
+  }
+
+  public showCompleted(): void {
+    this.tasks = this.itemService.getAllTasks().filter((array) => {
+      return array.isActive === false;
+    })
   }
 
 }
