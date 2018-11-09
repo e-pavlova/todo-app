@@ -15,6 +15,7 @@
 .task__filtered__all__link {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 .task__filtered__all__link:hover {
@@ -23,6 +24,5 @@
 }
 
 .task__filtered__all {
-
 }
 

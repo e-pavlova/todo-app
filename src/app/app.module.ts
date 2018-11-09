@@ -7,6 +7,8 @@ import {TodoItemComponent} from './todo-item/todo-item.component';
 import {TodoViewComponent} from './todo-view/todo-view.component';
 import {CoreModule} from './core/core.module';
 import {FormsModule} from '@angular/forms';
+import {AppRoutingModule} from "./app-routing.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

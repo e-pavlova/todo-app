@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
-import { Output } from "@angular/core";
+import {Output} from "@angular/core";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-todo-view',
@@ -12,19 +13,22 @@ export class TodoViewComponent implements OnInit {
   @Output() onActive = new EventEmitter();
   @Output() onCompleted = new EventEmitter();
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
-  showAllTasks(event) {
+  public showAllTasks(event) {
     this.onViewAll.emit(event);
+    this.router.navigate(['']);
   }
 
-  showActiveTasks(event) {
+  public showActiveTasks(event) {
     this.onActive.emit(event);
+    this.router.navigate([''], {queryParams: {filter: 'active'}});
   }
 
-  showCompletedTasks(event) {
+  public showCompletedTasks(event) {
     this.onCompleted.emit(event);
+    this.router.navigate([''], {queryParams: {filter: 'completed'}});
   }
 
   ngOnInit() {

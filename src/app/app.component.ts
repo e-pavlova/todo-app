@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ItemService} from './core/services/item.service';
 import {Item} from './item.interface';
 import {NotifyService} from './core/services/notify.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,23 @@ export class AppComponent implements OnInit {
 
   public tasks: Item[];
 
-  constructor(private itemService: ItemService, private notifyService: NotifyService) {
+  constructor(private itemService: ItemService,
+              private notifyService: NotifyService,
+              private route: ActivatedRoute) {
 
     notifyService.taskChanged$.subscribe(() => this.tasks = this.itemService.getAllTasks());
+
+    route.queryParams.subscribe((param) => {
+        switch (param.key) {
+          case '':
+            this.showAll();
+          case 'active':
+            this.showActive();
+          case 'completed':
+            this.showCompleted();
+        }
+      }
+    );
   }
 
   ngOnInit() {
