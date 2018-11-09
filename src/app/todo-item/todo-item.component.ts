@@ -12,7 +12,6 @@ export class TodoItemComponent implements OnInit {
   @Input() task: Item;
 
   public isEdit: boolean = false;
-  public isCompleted: boolean = true;
 
   constructor(private itemService: ItemService, private notifyService: NotifyService) {
   }
@@ -28,7 +27,7 @@ export class TodoItemComponent implements OnInit {
 
   public completeTask(id: number): void {
     this.itemService.markAsCompleted(id);
-    this.isCompleted = this.itemService.getTaskById(id).isActive;
+    this.task.isActive = !this.task.isActive;
   }
 
   public removeTask(id: number): void {
