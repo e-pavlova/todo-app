@@ -1,23 +1,26 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, OnDestroy} from '@angular/core';
 import {Output} from "@angular/core";
-import { ActivatedRoute, Router } from '@angular/router';
-import { Params } from '@angular/router/src/shared';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Params} from '@angular/router/src/shared';
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-todo-view',
   templateUrl: './todo-view.component.html',
   styleUrls: ['./todo-view.component.css']
 })
-export class TodoViewComponent implements OnInit {
+export class TodoViewComponent implements OnInit, OnDestroy {
 
   @Output() onViewAll = new EventEmitter();
   @Output() onActive = new EventEmitter();
   @Output() onCompleted = new EventEmitter();
 
   public selectedFilter: string;
+  private componentDestroyed: Subject<void> = new Subject();
 
   constructor(private router: Router, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe((params: Params) => {
+    this.route.queryParams.pipe(takeUntil(this.componentDestroyed)).subscribe((params: Params) => {
       switch (params.filter) {
         case undefined:
           this.selectedFilter = undefined;
@@ -50,4 +53,8 @@ export class TodoViewComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    this.componentDestroyed.next();
+    this.componentDestroyed.unsubscribe();
+  }
 }
