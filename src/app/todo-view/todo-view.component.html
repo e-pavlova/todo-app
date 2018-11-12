@@ -1,0 +1,11 @@
+<div class="task__filtered">
+  <div class="task__filtered__all" (click)="showAllTasks($event)">
+    <a class="task__filtered__all__link" [ngClass]="{'isActiveFilter': selectedFilter === undefined}">View All</a>
+  </div>
+  <div class="task__filtered__all" (click)="showActiveTasks($event)">
+    <a class="task__filtered__all__link" [ngClass]="{'isActiveFilter': selectedFilter === 'active'}">Active</a>
+  </div>
+  <div (click)="showCompletedTasks($event)">
+    <a class="task__filtered__all__link" [ngClass]="{'isActiveFilter': selectedFilter === 'completed'}">Completed</a>
+  </div>
+</div>

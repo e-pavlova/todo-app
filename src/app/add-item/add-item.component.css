@@ -1,0 +1,43 @@
+.task {
+  border-bottom: 1px dotted #666;
+  height: 3rem;
+  line-height: 3rem;
+}
+
+.task__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task__container__button {
+  border: 0;
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  background-color: #2a2a2a;
+  color: #555;
+  outline: none;
+}
+
+.icon {
+  color: inherit;
+  font-size: 1.2rem;
+}
+
+.task__container__input__text {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  width: 45rem;
+}
+
+::placeholder {
+  color: rgb(211, 211, 211);
+}
+
+.task__container__button:hover {
+  cursor: pointer;
+  color: rgb(211, 211, 211);
+}

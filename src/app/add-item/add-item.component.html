@@ -1,0 +1,10 @@
+<div class="task">
+  <div class="task__container">
+    <div class="task__container__input">
+      <input type="text" placeholder="What needs to be done?" class="task__container__input__text" #task>
+    </div>
+    <button class="task__container__button" (click)="createItem(task.value); task.value = ''">
+      <i class="fas fa-plus icon"></i>
+    </button>
+  </div>
+</div>

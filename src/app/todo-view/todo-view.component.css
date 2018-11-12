@@ -1,0 +1,30 @@
+.task__filtered {
+  display: flex;
+  height: 6rem;
+  border-bottom: 1px dotted #666;
+  color: #999;
+  padding-top: 1.5rem;
+}
+
+.task__filtered__all:after {
+  content: "/";
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.task__filtered__all__link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.task__filtered__all__link:hover {
+  color: #85bf6b;
+}
+
+.task__filtered__all {
+}
+
+.isActiveFilter {
+  color: #85bf6b;
+}

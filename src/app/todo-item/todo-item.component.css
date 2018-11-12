@@ -1,0 +1,70 @@
+.task__item {
+  /*height: 3rem;*/
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted #666;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.task__item__text {
+  color: rgb(211, 211, 211);
+  /*color: rgb(255, 255, 255);*/
+}
+
+.task__item__action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task__item__action__button{
+  border: 0;
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  background-color: #2a2a2a;
+  color: #555;
+  outline: none;
+}
+
+.icons {
+  color: inherit;
+  font-size: 1.2rem;
+}
+
+.task__item__action__button:hover {
+  cursor: pointer;
+  color: rgb(211, 211, 211);
+}
+
+.task__item__action__button__trash {
+  margin-left: 0.3rem;
+}
+
+.task__item__text__checked {
+  text-decoration: line-through #85bf6b;
+}
+
+.task__item__action__button__checked {
+  color: #85bf6b;
+}
+
+.task__container__input__text {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  width: 45rem;
+}
+
+.task__item__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task__item__container__button {
+  margin-right: 1rem;
+}
