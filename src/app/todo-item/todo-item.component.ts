@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ItemService } from '../core/services/item.service';
 import { Item } from '../item.interface';
-import {NotifyService} from "../core/services/notify.service";
+import {NotifyService} from '../core/services/notify.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -13,7 +13,8 @@ export class TodoItemComponent implements OnInit {
 
   public isEdit: boolean = false;
 
-  constructor(private itemService: ItemService, private notifyService: NotifyService) {
+  constructor(private itemService: ItemService,
+              private notifyService: NotifyService) {
   }
 
   public editTask(): void {

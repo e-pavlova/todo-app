@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ItemService} from './core/services/item.service';
-import {Item} from './item.interface';
-import {NotifyService} from './core/services/notify.service';
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ItemService } from './core/services/item.service';
+import { Item } from './item.interface';
+import { NotifyService } from './core/services/notify.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,28 +13,36 @@ export class AppComponent implements OnInit {
   title = 'todo';
 
   public tasks: Item[];
+  public filter: string;
 
   constructor(private itemService: ItemService,
               private notifyService: NotifyService,
               private route: ActivatedRoute) {
 
-    notifyService.taskChanged$.subscribe(() => this.tasks = this.itemService.getAllTasks());
+    notifyService.taskChanged$.subscribe(() => this.fillItems(this.filter));
 
     route.queryParams.subscribe((param) => {
-        switch (param.key) {
-          case '':
-            this.showAll();
-          case 'active':
-            this.showActive();
-          case 'completed':
-            this.showCompleted();
-        }
+        this.filter = param.filter;
+        this.fillItems(this.filter);
       }
     );
   }
 
   ngOnInit() {
-    this.tasks = this.itemService.getAllTasks();
+  }
+
+  public fillItems(filter: string): void {
+    switch (filter) {
+      case undefined:
+        this.showAll();
+        break;
+      case 'active':
+        this.showActive();
+        break;
+      case 'completed':
+        this.showCompleted();
+        break;
+    }
   }
 
   public showAll(): void {
@@ -44,13 +52,13 @@ export class AppComponent implements OnInit {
   public showActive(): void {
     this.tasks = this.itemService.getAllTasks().filter((array) => {
       return array.isActive === true;
-    })
+    });
   }
 
   public showCompleted(): void {
     this.tasks = this.itemService.getAllTasks().filter((array) => {
       return array.isActive === false;
-    })
+    });
   }
 
 }

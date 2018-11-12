@@ -19,10 +19,12 @@
 }
 
 .task__filtered__all__link:hover {
-  /*color: rgb(211, 211, 211);*/
   color: #85bf6b;
 }
 
 .task__filtered__all {
 }
 
+.isActiveFilter {
+  color: #85bf6b;
+}
