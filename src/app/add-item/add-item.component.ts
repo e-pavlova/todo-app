@@ -14,7 +14,9 @@ export class AddItemComponent implements OnInit {
   }
 
   public createItem(description: string) {
-    this.store.dispatch(new CreateItem(description));
+    if (description) {
+      this.store.dispatch(new CreateItem(description));
+    }
   }
 
   ngOnInit() {
