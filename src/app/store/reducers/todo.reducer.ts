@@ -10,12 +10,6 @@ export function todoReducer(state: GlobalState = initialState, action: todo_acti
 
   switch (action.type) {
 
-    // case todo_action.GET_ALL:
-    //   return {...state};
-
-    // case todo_action.GET_TODO:
-    //   return;
-
     case todo_action.CREATE_TODO: {
       const create = action as todo_action.CreateItem;
       const newTodos = [...state.todos, {
@@ -23,8 +17,8 @@ export function todoReducer(state: GlobalState = initialState, action: todo_acti
         description: create.description,
         isActive: true
       }];
-      console.log(Object.assign({}, state, { todos: newTodos }));
-      return Object.assign({}, state, { todos: newTodos });
+      console.log(Object.assign({}, state, {todos: newTodos}));
+      return Object.assign({}, state, {todos: newTodos});
     }
 
     case todo_action.UPDATE_TODO:
