@@ -3,7 +3,7 @@ import {GlobalState} from '../item-state.interface'
 import {Item} from "../../item.interface";
 
 export const initialState: GlobalState = {
-  todos: []
+  todos: JSON.parse(localStorage.getItem('array')) || []
 };
 
 export function todoReducer(state: GlobalState = initialState, action: todo_action.TodoActionTypes): GlobalState {
@@ -23,7 +23,8 @@ export function todoReducer(state: GlobalState = initialState, action: todo_acti
         description: create.description,
         isActive: true
       }];
-      return {...state, ...{todos: newTodos}};
+      console.log(Object.assign({}, state, { todos: newTodos }));
+      return Object.assign({}, state, { todos: newTodos });
     }
 
     case todo_action.UPDATE_TODO:
@@ -53,7 +54,7 @@ export function todoReducer(state: GlobalState = initialState, action: todo_acti
 
     case todo_action.DELETE_TODO: {
       const deleteTodo = action as todo_action.DeleteItem;
-      const newTodos = state.todos.map((x: Item) => {
+      const newTodos = state.todos.filter((x: Item) => {
         return x.id !== deleteTodo.id;
       });
 
