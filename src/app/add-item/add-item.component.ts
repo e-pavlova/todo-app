@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NotifyService } from '../core/services/notify.service';
-import { ItemService } from '../core/services/item.service';
+import {Component, OnInit} from '@angular/core';
+import {GlobalState} from "../store/item-state.interface";
+import {Store} from "@ngrx/store";
+import {CreateItem} from "../store/actions/todo.action";
 
 @Component({
   selector: 'app-add-item',
@@ -9,13 +10,15 @@ import { ItemService } from '../core/services/item.service';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor(private itemService: ItemService, private notifyService: NotifyService) {
+  constructor(private store: Store<GlobalState>) {
   }
 
   public createItem(description: string) {
-    this.itemService.createTask(description);
-    this.notifyService.notifyChanges();
+    if (description) {
+      this.store.dispatch(new CreateItem(description));
+    }
   }
+
   ngOnInit() {
   }
 

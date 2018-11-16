@@ -9,6 +9,10 @@ import {CoreModule} from './core/core.module';
 import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from "./app-routing.module";
 import {RouterModule} from "@angular/router";
+import {StoreModule} from '@ngrx/store';
+import {todoReducer} from './store/reducers/todo.reducer'
+import {EffectsModule} from "@ngrx/effects";
+import {TodoEffects} from "./store/effects/todo.effect";
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import {RouterModule} from "@angular/router";
     CoreModule,
     FormsModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    StoreModule.forRoot({
+      todos: todoReducer
+    }),
+    EffectsModule.forRoot([TodoEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

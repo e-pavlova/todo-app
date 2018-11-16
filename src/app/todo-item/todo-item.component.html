@@ -9,7 +9,8 @@
     <div class="task__item__text" *ngIf="!isEdit" [ngClass]="{'task__item__text__checked': !task.isActive}">
       {{task.description}}
     </div>
-    <input class="task__container__input__text" *ngIf="isEdit" [(ngModel)]="task.description" name="task">
+    <input class="task__container__input__text" *ngIf="isEdit" [(ngModel)]="task.description" name="task"
+           (keyup.enter)="saveTask(task.id, task.description)">
   </div>
   <div class="task__item__action">
     <button class="task__item__action__button" (click)="editTask()" *ngIf="!isEdit">

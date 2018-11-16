@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ItemService } from '../core/services/item.service';
-import { Item } from '../item.interface';
-import {NotifyService} from '../core/services/notify.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Item} from '../item.interface';
+import {GlobalState} from "../store/item-state.interface";
+import {Store} from "@ngrx/store";
+import * as todo_action from "../store/actions/todo.action";
 
 @Component({
   selector: 'app-todo-item',
@@ -13,8 +14,7 @@ export class TodoItemComponent implements OnInit {
 
   public isEdit: boolean = false;
 
-  constructor(private itemService: ItemService,
-              private notifyService: NotifyService) {
+  constructor(private store: Store<GlobalState>) {
   }
 
   public editTask(): void {
@@ -23,17 +23,15 @@ export class TodoItemComponent implements OnInit {
 
   public saveTask(id: number, description: string): void {
     this.isEdit = false;
-    this.itemService.updateDescription(id, description);
+    this.store.dispatch(new todo_action.UpdateItem({id, description}));
   }
 
   public completeTask(id: number): void {
-    this.itemService.markAsCompleted(id);
-    this.task.isActive = !this.task.isActive;
+    this.store.dispatch(new todo_action.MarkItem(id, !this.task.isActive));
   }
 
   public removeTask(id: number): void {
-    this.itemService.deleteTask(id);
-    this.notifyService.notifyChanges();
+    this.store.dispatch(new todo_action.DeleteItem(id));
   }
 
   ngOnInit() {
